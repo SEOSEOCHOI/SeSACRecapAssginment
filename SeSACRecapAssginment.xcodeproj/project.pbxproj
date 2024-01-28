@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B2347902B666C42003C9709 /* MainSearchCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23478F2B666C42003C9709 /* MainSearchCodeTableViewCell.swift */; };
 		2B56F2E12B59678A00494E50 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B56F2E02B59678A00494E50 /* ProfileImage.swift */; };
 		2B56F2E42B596A0700494E50 /* UIViewcontroller + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B56F2E32B596A0700494E50 /* UIViewcontroller + Extension.swift */; };
 		2B56F2E62B596B6000494E50 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B56F2E52B596B6000494E50 /* Protocol.swift */; };
@@ -17,6 +18,9 @@
 		2B56F2F22B597A5400494E50 /* ProfileSetting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B56F2F12B597A5400494E50 /* ProfileSetting.storyboard */; };
 		2B56F2F72B59951200494E50 /* ProfileSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B56F2F52B59951200494E50 /* ProfileSettingCollectionViewCell.swift */; };
 		2B56F2F82B59951200494E50 /* ProfileSettingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B56F2F62B59951200494E50 /* ProfileSettingCollectionViewCell.xib */; };
+		2B855F542B6575F0004B0726 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2B855F532B6575F0004B0726 /* SnapKit */; };
+		2B855F562B6575F0004B0726 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 2B855F552B6575F0004B0726 /* SnapKit-Dynamic */; };
+		2B855F592B6623D3004B0726 /* MainSearchCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B855F582B6623D3004B0726 /* MainSearchCodeViewController.swift */; };
 		2BB13E142B5AEF7100DCCB3D /* MainSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB13E132B5AEF7100DCCB3D /* MainSearchViewController.swift */; };
 		2BB13E172B5AEF9100DCCB3D /* MainSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB13E152B5AEF9100DCCB3D /* MainSearchTableViewCell.swift */; };
 		2BB13E182B5AEF9100DCCB3D /* MainSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BB13E162B5AEF9100DCCB3D /* MainSearchTableViewCell.xib */; };
@@ -53,6 +57,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B23478F2B666C42003C9709 /* MainSearchCodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchCodeTableViewCell.swift; sourceTree = "<group>"; };
 		2B56F2E02B59678A00494E50 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		2B56F2E32B596A0700494E50 /* UIViewcontroller + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewcontroller + Extension.swift"; sourceTree = "<group>"; };
 		2B56F2E52B596B6000494E50 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
@@ -63,6 +68,7 @@
 		2B56F2F12B597A5400494E50 /* ProfileSetting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileSetting.storyboard; sourceTree = "<group>"; };
 		2B56F2F52B59951200494E50 /* ProfileSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B56F2F62B59951200494E50 /* ProfileSettingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSettingCollectionViewCell.xib; sourceTree = "<group>"; };
+		2B855F582B6623D3004B0726 /* MainSearchCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchCodeViewController.swift; sourceTree = "<group>"; };
 		2BB13E132B5AEF7100DCCB3D /* MainSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchViewController.swift; sourceTree = "<group>"; };
 		2BB13E152B5AEF9100DCCB3D /* MainSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchTableViewCell.swift; sourceTree = "<group>"; };
 		2BB13E162B5AEF9100DCCB3D /* MainSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainSearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -102,7 +108,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B855F562B6575F0004B0726 /* SnapKit-Dynamic in Frameworks */,
 				2BCE4F9A2B5955B7001AAE55 /* TextFieldEffects in Frameworks */,
+				2B855F542B6575F0004B0726 /* SnapKit in Frameworks */,
 				2BCE4F942B595595001AAE55 /* Kingfisher in Frameworks */,
 				2BCE4F972B5955A7001AAE55 /* Alamofire in Frameworks */,
 			);
@@ -149,6 +157,15 @@
 				2B56F2F62B59951200494E50 /* ProfileSettingCollectionViewCell.xib */,
 			);
 			path = ProfileSetting;
+			sourceTree = "<group>";
+		};
+		2B855F572B662257004B0726 /* CodeBase */ = {
+			isa = PBXGroup;
+			children = (
+				2B855F582B6623D3004B0726 /* MainSearchCodeViewController.swift */,
+				2B23478F2B666C42003C9709 /* MainSearchCodeTableViewCell.swift */,
+			);
+			path = CodeBase;
 			sourceTree = "<group>";
 		};
 		2BB13E122B5A91C000DCCB3D /* Main */ = {
@@ -248,6 +265,7 @@
 				2BCE4F9B2B5955CC001AAE55 /* UserDefaultManager.swift */,
 				2BD5C66E2B5BF9E400B218F9 /* ShoppingAPIManager.swift */,
 				2BF36CB82B594BE9007BE3A7 /* APIKey.swift */,
+				2B855F572B662257004B0726 /* CodeBase */,
 				2B56F2DF2B59677F00494E50 /* Model */,
 				2B56F2E72B596B7D00494E50 /* Protocol */,
 				2B56F2E22B5969EF00494E50 /* Extension */,
@@ -283,6 +301,8 @@
 				2BCE4F932B595595001AAE55 /* Kingfisher */,
 				2BCE4F962B5955A7001AAE55 /* Alamofire */,
 				2BCE4F992B5955B7001AAE55 /* TextFieldEffects */,
+				2B855F532B6575F0004B0726 /* SnapKit */,
+				2B855F552B6575F0004B0726 /* SnapKit-Dynamic */,
 			);
 			productName = SeSACRecapAssginment;
 			productReference = 2BF36C9F2B5942ED007BE3A7 /* SeSACRecapAssginment.app */;
@@ -316,6 +336,7 @@
 				2BCE4F922B595595001AAE55 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				2BCE4F952B5955A7001AAE55 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				2BCE4F982B5955B7001AAE55 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
+				2B855F522B6575F0004B0726 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 2BF36CA02B5942ED007BE3A7 /* Products */;
 			projectDirPath = "";
@@ -357,6 +378,7 @@
 			files = (
 				2BB415342B5D376D00C5A1D4 /* SettingProfileTableViewCell.swift in Sources */,
 				2BCE4F8E2B595424001AAE55 /* ProfileViewController.swift in Sources */,
+				2B855F592B6623D3004B0726 /* MainSearchCodeViewController.swift in Sources */,
 				2BB415302B5CE2F500C5A1D4 /* SettingTableViewCell.swift in Sources */,
 				2B56F2ED2B5975A800494E50 /* UIButton + Extension.swift in Sources */,
 				2B56F2E42B596A0700494E50 /* UIViewcontroller + Extension.swift in Sources */,
@@ -377,6 +399,7 @@
 				2BB13E172B5AEF9100DCCB3D /* MainSearchTableViewCell.swift in Sources */,
 				2BCE4F8C2B594D3B001AAE55 /* OnboradingViewController.swift in Sources */,
 				2B56F2E62B596B6000494E50 /* Protocol.swift in Sources */,
+				2B2347902B666C42003C9709 /* MainSearchCodeTableViewCell.swift in Sources */,
 				2BB13E142B5AEF7100DCCB3D /* MainSearchViewController.swift in Sources */,
 				2BB415282B5C5F1900C5A1D4 /* SearchDetailViewController.swift in Sources */,
 				2BCE4F9C2B5955CC001AAE55 /* UserDefaultManager.swift in Sources */,
@@ -540,7 +563,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -569,7 +592,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -607,6 +630,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2B855F522B6575F0004B0726 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
+			};
+		};
 		2BCE4F922B595595001AAE55 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -634,6 +665,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2B855F532B6575F0004B0726 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B855F522B6575F0004B0726 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		2B855F552B6575F0004B0726 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B855F522B6575F0004B0726 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
 		2BCE4F932B595595001AAE55 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 2BCE4F922B595595001AAE55 /* XCRemoteSwiftPackageReference "Kingfisher" */;

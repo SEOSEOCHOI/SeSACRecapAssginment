@@ -12,9 +12,14 @@ class SettingTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        settingTitleLabel.font = .systemFont(ofSize: 13)
     }
+}
 
-
+extension SettingTableViewCell {
     
+    func configureCell(data: String) {
+        settingTitleLabel.text =  data
+
+    }
 }

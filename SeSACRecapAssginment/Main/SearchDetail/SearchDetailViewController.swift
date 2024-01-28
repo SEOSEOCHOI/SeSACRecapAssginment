@@ -41,6 +41,9 @@ extension SearchDetailViewController {
             style: .plain,
             target: self,
             action: #selector(rightButtonClicked))
+        navigationItem.rightBarButtonItem?.tintColor = .white
+        navigationItem.rightBarButtonItem?.title = ""
+
     }
     
     @objc func rightButtonClicked(_ sender: UIButton) {

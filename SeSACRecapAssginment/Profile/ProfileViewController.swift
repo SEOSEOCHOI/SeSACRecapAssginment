@@ -129,31 +129,29 @@ extension ProfileViewController {
 extension ProfileViewController: UITextFieldDelegate {
     // TODO: Regex 학습
     @objc func textFieldDidChanged() {
-        statusLabel.text = ""
+        statusLabel.text = "사용할 수 있는 닉네임이에요"
         
-
-        if nickname() == true {
+        if nicknameLength() == true {
             statusLabel.text = "2글자 이상 10글자 미만으로 설정해 주세요"
         }
         
-        if nickname2() == true {
+        if isContainSpecial() == true {
             statusLabel.text = "닉네임에 @, #, $, %는 포함할 수 없어요."
         }
 
-        if nickname3() == true {
+        if isContainNumber() == true {
             statusLabel.text = "닉네임에 숫자를 포함할 수 없어요."
         }
         
-        if !nickname() && !nickname2() && !nickname3() {
+        if !nicknameLength() && !isContainSpecial() && !isContainNumber() {
             compliteButton.isEnabled = true
-
             compliteButton.addTarget(self, action: #selector(compliteButtonCliked), for: .touchUpInside)
         } else {
             compliteButton.isEnabled = false
         }
     }
     
-    func nickname() -> Bool {
+    func nicknameLength() -> Bool {
         if let nickname = nicknameTextField.text {
             if nickname.count < 2 || nickname.count > 10 {
                 return true
@@ -162,7 +160,7 @@ extension ProfileViewController: UITextFieldDelegate {
         return false
     }
     
-    func nickname2() -> Bool {
+    func isContainSpecial() -> Bool {
         if let nickname = nicknameTextField.text {
             if nickname.contains("@") ||
                 nickname.contains("#") ||
@@ -174,7 +172,7 @@ extension ProfileViewController: UITextFieldDelegate {
         return false
     }
     
-    func nickname3() -> Bool  {
+    func isContainNumber() -> Bool  {
         let pattern: String = "^.*[0-9].*$"
         
         let nickname = nicknameTextField.text!

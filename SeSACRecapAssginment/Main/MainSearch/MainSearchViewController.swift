@@ -25,7 +25,7 @@ class MainSearchViewController: UIViewController {
 }
 
 
-
+// MARK: TableView
 extension MainSearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchList.count
@@ -35,7 +35,6 @@ extension MainSearchViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: MainSearchTableViewCell.identifier, for: indexPath) as! MainSearchTableViewCell
         
         cell.configureCell(data: searchList[indexPath.row])
-        
         cell.deleteButton.tag = indexPath.row
         cell.deleteButton.addTarget(self, action: #selector(deleteCellClicked), for: .touchUpInside)
         
@@ -53,8 +52,6 @@ extension MainSearchViewController: UITableViewDelegate, UITableViewDataSource {
         let sb = UIStoryboard(name: "SearchResult", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: SearchResultViewController.identifier) as! SearchResultViewController
         
-       UserDefaultManager.shaerd.userSearch = searchList
-
         searchTableView.reloadData()
 
         vc.userFind = searchList[indexPath.row]
@@ -141,5 +138,3 @@ extension MainSearchViewController {
         
     }
 }
-
-

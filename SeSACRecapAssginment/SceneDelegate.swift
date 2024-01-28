@@ -12,42 +12,53 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-                
+
         guard let scene = (scene as? UIWindowScene) else { return }
         
-        window = scene.windows.first!
+        window = UIWindow(windowScene: scene)
+        let navigationController = UINavigationController(rootViewController: MainSearchCodeViewController())
 
-        var value = UserDefaultManager.shaerd.userStatus
         
-        if UserDefaultManager.shaerd.userNickname != "" { value = true }
-        
-        if value == false {
-            
-            window = UIWindow(windowScene: scene)
-            
-            let sb = UIStoryboard(name: "Onboarding", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: OnboradingViewController.identifier) as! OnboradingViewController
-            let nav = UINavigationController(rootViewController: vc)
-            
-            window?.rootViewController = nav
-            
-            window?.makeKeyAndVisible()
-        }
-        else {
-            
-            window = UIWindow(windowScene: scene)
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            
-            var vc = sb.instantiateViewController(identifier: "mainTabBarController") as! UITabBarController
-
-            if !UserDefaultManager.shaerd.userSearch.isEmpty {
-                vc = sb.instantiateViewController(identifier: "mainSearchTabBarController") as! UITabBarController
-            }
-            window?.rootViewController = vc
-            
-            window?.makeKeyAndVisible()
-        }
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//                
+//        guard let scene = (scene as? UIWindowScene) else { return }
+//        
+//        window = scene.windows.first!
+//
+//        var value = UserDefaultManager.shaerd.userStatus
+//        
+//        if UserDefaultManager.shaerd.userNickname != "" { value = true }
+//        
+//        if value == false {
+//            
+//            window = UIWindow(windowScene: scene)
+//            
+//            let sb = UIStoryboard(name: "Onboarding", bundle: nil)
+//            let vc = sb.instantiateViewController(withIdentifier: OnboradingViewController.identifier) as! OnboradingViewController
+//            let nav = UINavigationController(rootViewController: vc)
+//            
+//            window?.rootViewController = nav
+//            
+//            window?.makeKeyAndVisible()
+//        }
+//        else {
+//            
+//            window = UIWindow(windowScene: scene)
+//            let sb = UIStoryboard(name: "Main", bundle: nil)
+//            
+//            var vc = sb.instantiateViewController(identifier: "mainTabBarController") as! UITabBarController
+//
+//            if !UserDefaultManager.shaerd.userSearch.isEmpty {
+//                vc = sb.instantiateViewController(identifier: "mainSearchTabBarController") as! UITabBarController
+//            }
+//            window?.rootViewController = vc
+//            
+//            window?.makeKeyAndVisible()
+//        }
+//    }
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

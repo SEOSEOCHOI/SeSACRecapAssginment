@@ -91,30 +91,14 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingProfileTableViewCell.identifier, for: indexPath) as! SettingProfileTableViewCell
-            
-            cell.uesrNameLabel.text = UserDefaultManager.shaerd.userNickname
-            cell.uesrNameLabel.font = .boldSystemFont(ofSize: 17)
-            
-            cell.userLikesCountLabel.text = "\(UserDefaultManager.shaerd.userLike.count)개의 상품을"
-            cell.userLikesCountLabel.font = .systemFont(ofSize: 15)
-            cell.userLikesCountLabel.textColor = UIColor(named: Color.PointColor.rawValue)
-            
-            cell.userStatusLabel.text = "을 좋아하고 있어요!"
-            cell.userStatusLabel.font = .systemFont(ofSize: 15)
-            
-            
-            cell.userProfileImageView.image = UIImage(named: UserDefaultManager.shaerd.userImage)
-            
-            cell.userProfileImageView.setBorder(image: cell.userProfileImageView)
-            cell.userProfileImageView.setRadius(image: cell.userProfileImageView)
-            
-            
+
             return cell
             
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as! SettingTableViewCell
             
-            cell.settingTitleLabel.text =  settingList[indexPath.row].rawValue
+            cell.configureCell(data: settingList[indexPath.row].rawValue)
+
             cell.settingTitleLabel.font = .systemFont(ofSize: 13)
             if indexPath.row != settingList.endIndex - 1
             {

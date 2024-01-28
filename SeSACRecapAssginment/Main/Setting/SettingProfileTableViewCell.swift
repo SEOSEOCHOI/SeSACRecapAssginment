@@ -15,7 +15,23 @@ class SettingProfileTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        uesrNameLabel.font = .boldSystemFont(ofSize: 17)
+        
+        userLikesCountLabel.font = .systemFont(ofSize: 15)
+        userLikesCountLabel.textColor = UIColor(named: Color.PointColor.rawValue)
+        
+        userStatusLabel.text = "을 좋아하고 있어요!"
+        userStatusLabel.font = .systemFont(ofSize: 15)
+        
+        userProfileImageView.setBorder(image: userProfileImageView)
+        userProfileImageView.setRadius(image: userProfileImageView)
+        
+        uesrNameLabel.text = UserDefaultManager.shaerd.userNickname
+        
+        userLikesCountLabel.text = "\(UserDefaultManager.shaerd.userLike.count)개의 상품을"
+        
+        userProfileImageView.image = UIImage(named: UserDefaultManager.shaerd.userImage)
     }
     
 }
