@@ -17,14 +17,17 @@ class MainSearchCodeViewController: UIViewController {
     lazy var searchList: [String] = UserDefaultManager.shaerd.userSearch
     
     let searchBar = UISearchBar()
-    let searchTableView = UITableView()
     let backView = UIView()
     let recentLabel = UILabel()
     let deleteButton = UIButton()
-    
+    let searchTableView = UITableView()
+    let blankImageView = UIImageView()
+    let statusLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchTableView.backgroundColor = .white
         setBackgroundColor()
         
         configureHierarchy()
@@ -33,10 +36,7 @@ class MainSearchCodeViewController: UIViewController {
         
         configureNavigationItem()
         configureTableView()
-        
     }
-    
-    
 }
 
 extension MainSearchCodeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -46,6 +46,7 @@ extension MainSearchCodeViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchTableView.dequeueReusableCell(withIdentifier: MainSearchCodeTableViewCell.identifier, for: indexPath) as! MainSearchCodeTableViewCell
+
         
         cell.configureCell(data: searchList[indexPath.row])
         cell.deleteButton.tag = indexPath.row
@@ -58,14 +59,16 @@ extension MainSearchCodeViewController: UITableViewDelegate, UITableViewDataSour
         searchList.remove(at: sender.tag)
         UserDefaultManager.shaerd.userSearch = searchList
         searchTableView.reloadData()
+        isEmptySearchList()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    
+        // TODO: 화면이동
+        print(indexPath)
         let sb = UIStoryboard(name: "SearchResult", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: SearchResultViewController.identifier) as! SearchResultViewController
         
-        searchTableView.reloadData()
         
         vc.userFind = searchList[indexPath.row]
         
@@ -73,33 +76,42 @@ extension MainSearchCodeViewController: UITableViewDelegate, UITableViewDataSour
     }
 }
 
+
+
 extension MainSearchCodeViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let item = searchBar.text else { return }
         var isDuplicate = false
         
-        for data in 0 ... UserDefaultManager.shaerd.userSearch.count - 1 {
-            if UserDefaultManager.shaerd.userSearch[data].lowercased() == item.lowercased() {
-                isDuplicate = true
-                searchList.remove(at: data)
-                searchList.insert(item, at: 0)
+        if !UserDefaultManager.shaerd.userSearch.isEmpty {
+            for data in 0 ... UserDefaultManager.shaerd.userSearch.count - 1 {
+                if UserDefaultManager.shaerd.userSearch[data].lowercased() == item.lowercased() {
+                    isDuplicate = true
+                    searchList.remove(at: data)
+                    searchList.insert(item, at: 0)
+                }
             }
+        } else {
+            searchList.insert(item, at: 0)
+            isDuplicate = true
         }
+
         if !isDuplicate {
             searchList.insert(item, at: 0)
         }
         UserDefaultManager.shaerd.userSearch = searchList
         
-        print(searchList)
-        print(UserDefaultManager.shaerd.userSearch)
+        isEmptySearchList()
+        
         searchTableView.reloadData()
         
         searchBar.text = ""
         
-        let sb = UIStoryboard(name: "SearchResult", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: SearchResultViewController.identifier) as! SearchResultViewController
+
+        let vc = SearchResultCodeViewController()
         
         vc.userFind = item
+        print("화면전환")
         
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -108,6 +120,8 @@ extension MainSearchCodeViewController: UISearchBarDelegate {
 extension MainSearchCodeViewController {
     func configureNavigationItem() {
         navigationItem.title = "\(UserDefaultManager.shaerd.userNickname)님의 새싹쇼핑"
+        
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
         searchBar.delegate = self
     }
@@ -123,11 +137,24 @@ extension MainSearchCodeViewController {
         view.addSubview(backView)
         backView.addSubview(recentLabel)
         backView.addSubview(deleteButton)
-        backView.addSubview(searchTableView)
+        view.addSubview(searchTableView)
+        view.addSubview(blankImageView)
+        view.addSubview(statusLabel)
+
     }
     
     func configureView() {
         searchBar.placeholder = "브랜드, 상품, 프로필, 태그 등"
+        
+        isEmptySearchList()
+        
+        blankImageView.image = .empty
+        blankImageView.contentMode = .scaleAspectFit
+        
+        statusLabel.text = "최근 검색어가 없어요"
+        statusLabel.textColor = .white
+        statusLabel.textAlignment = .center
+        statusLabel.font = .boldSystemFont(ofSize: 17)
         
         backView.backgroundColor = .clear
         recentLabel.text = "최근 검색"
@@ -136,8 +163,22 @@ extension MainSearchCodeViewController {
         deleteButton.setTitle("모두 지우기", for: .normal)
         deleteButton.setTitleColor(UIColor(named: Color.PointColor.rawValue), for: .normal)
         deleteButton.titleLabel?.font = .boldSystemFont(ofSize: 13)
-        
         deleteButton.addTarget(self, action: #selector(deleteButtonClicked), for: .touchUpInside)
+    }
+    
+    func isEmptySearchList() {
+        print(#function)
+        if UserDefaultManager.shaerd.userSearch.isEmpty {
+            backView.isHidden = true
+            searchTableView.isHidden = true
+            blankImageView.isHidden = false
+            statusLabel.isHidden = false
+        } else {
+            blankImageView.isHidden = true
+            statusLabel.isHidden = true
+            backView.isHidden = false
+            searchTableView.isHidden = false
+        }
     }
     
     func configureConstraints() {
@@ -145,6 +186,18 @@ extension MainSearchCodeViewController {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        blankImageView.snp.makeConstraints { make in
+            make.center.equalTo(view)
+            make.width.equalTo(view).multipliedBy(0.8)
+            make.height.equalTo(blankImageView.snp.width)
+        }
+        
+        statusLabel.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(blankImageView)
+            make.top.equalTo(blankImageView.snp.bottom).offset(-20)
+        }
+        
         backView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom)
             make.horizontalEdges.equalTo(view)
@@ -158,7 +211,6 @@ extension MainSearchCodeViewController {
             make.centerY.equalTo(backView)
             make.trailing.equalTo(backView).inset(10)
         }
-        
         searchTableView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview()
             make.top.equalTo(backView.snp.bottom)
@@ -169,7 +221,7 @@ extension MainSearchCodeViewController {
     @objc func deleteButtonClicked() {
         searchList.removeAll()
         UserDefaultManager.shaerd.userSearch = searchList
-        
+        isEmptySearchList()
         searchTableView.reloadData()
     }
 }

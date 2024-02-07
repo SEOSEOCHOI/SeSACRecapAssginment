@@ -17,18 +17,10 @@ class MainSearchCodeTableViewCell: UITableViewCell {
     // override: 재정의이기 때문에 super 메서드도 작성해 주어야 한다.
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-//        self.addSubview(searchImage)
-//        self.addSubview(titleLabel)
-//        self.addSubview(deleteButton)
-//        
-        
-        // 스토리보드에서 살펴보았음
+
         contentView.addSubview(titleLabel)
         contentView.addSubview(deleteButton)
         contentView.addSubview(searchImage)
-        
-        
         
         searchImage.image = UIImage(systemName: "magnifyingglass")
         searchImage.tintColor = .lightGray
@@ -38,8 +30,6 @@ class MainSearchCodeTableViewCell: UITableViewCell {
         deleteButton.tintColor = .lightGray
         
         titleLabel.font = .systemFont(ofSize: 13)
-        titleLabel.text = "하이"
-        
         
         deleteButton.snp.makeConstraints { make in
             make.size.equalTo(30)
@@ -73,6 +63,8 @@ class MainSearchCodeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
 
 }
 

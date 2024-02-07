@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		2B2347902B666C42003C9709 /* MainSearchCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23478F2B666C42003C9709 /* MainSearchCodeTableViewCell.swift */; };
+		2B2347CB2B67ADF0003C9709 /* OnboardingCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2347CA2B67ADF0003C9709 /* OnboardingCodeViewController.swift */; };
+		2B2347D12B67C193003C9709 /* ProfileCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2347D02B67C193003C9709 /* ProfileCodeViewController.swift */; };
+		2B2347D32B67CE8D003C9709 /* CompleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2347D22B67CE8D003C9709 /* CompleteButton.swift */; };
+		2B2347D52B67D85F003C9709 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2347D42B67D85F003C9709 /* ProfileImageView.swift */; };
+		2B2347D72B67DDD4003C9709 /* ProfileSettingCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2347D62B67DDD4003C9709 /* ProfileSettingCodeViewController.swift */; };
+		2B2347D92B67E50F003C9709 /* ProfileSettingCodeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2347D82B67E50F003C9709 /* ProfileSettingCodeCollectionViewCell.swift */; };
+		2B2347DC2B680323003C9709 /* SearchResultCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2347DB2B680323003C9709 /* SearchResultCodeViewController.swift */; };
+		2B2347E02B6803EE003C9709 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2347DF2B6803EE003C9709 /* LikeButton.swift */; };
+		2B2347E22B680509003C9709 /* SearchResultCodeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2347E12B680509003C9709 /* SearchResultCodeCollectionViewCell.swift */; };
+		2B2347E42B680D29003C9709 /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2347E32B680D29003C9709 /* SortButton.swift */; };
 		2B56F2E12B59678A00494E50 /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B56F2E02B59678A00494E50 /* ProfileImage.swift */; };
 		2B56F2E42B596A0700494E50 /* UIViewcontroller + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B56F2E32B596A0700494E50 /* UIViewcontroller + Extension.swift */; };
 		2B56F2E62B596B6000494E50 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B56F2E52B596B6000494E50 /* Protocol.swift */; };
@@ -21,6 +31,7 @@
 		2B855F542B6575F0004B0726 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2B855F532B6575F0004B0726 /* SnapKit */; };
 		2B855F562B6575F0004B0726 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 2B855F552B6575F0004B0726 /* SnapKit-Dynamic */; };
 		2B855F592B6623D3004B0726 /* MainSearchCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B855F582B6623D3004B0726 /* MainSearchCodeViewController.swift */; };
+		2BABC3152B7269580005DA5B /* ShoppingSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BABC3142B7269580005DA5B /* ShoppingSessionManager.swift */; };
 		2BB13E142B5AEF7100DCCB3D /* MainSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB13E132B5AEF7100DCCB3D /* MainSearchViewController.swift */; };
 		2BB13E172B5AEF9100DCCB3D /* MainSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB13E152B5AEF9100DCCB3D /* MainSearchTableViewCell.swift */; };
 		2BB13E182B5AEF9100DCCB3D /* MainSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BB13E162B5AEF9100DCCB3D /* MainSearchTableViewCell.xib */; };
@@ -58,6 +69,16 @@
 
 /* Begin PBXFileReference section */
 		2B23478F2B666C42003C9709 /* MainSearchCodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchCodeTableViewCell.swift; sourceTree = "<group>"; };
+		2B2347CA2B67ADF0003C9709 /* OnboardingCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCodeViewController.swift; sourceTree = "<group>"; };
+		2B2347D02B67C193003C9709 /* ProfileCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCodeViewController.swift; sourceTree = "<group>"; };
+		2B2347D22B67CE8D003C9709 /* CompleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteButton.swift; sourceTree = "<group>"; };
+		2B2347D42B67D85F003C9709 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		2B2347D62B67DDD4003C9709 /* ProfileSettingCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingCodeViewController.swift; sourceTree = "<group>"; };
+		2B2347D82B67E50F003C9709 /* ProfileSettingCodeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingCodeCollectionViewCell.swift; sourceTree = "<group>"; };
+		2B2347DB2B680323003C9709 /* SearchResultCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCodeViewController.swift; sourceTree = "<group>"; };
+		2B2347DF2B6803EE003C9709 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
+		2B2347E12B680509003C9709 /* SearchResultCodeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCodeCollectionViewCell.swift; sourceTree = "<group>"; };
+		2B2347E32B680D29003C9709 /* SortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButton.swift; sourceTree = "<group>"; };
 		2B56F2E02B59678A00494E50 /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		2B56F2E32B596A0700494E50 /* UIViewcontroller + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewcontroller + Extension.swift"; sourceTree = "<group>"; };
 		2B56F2E52B596B6000494E50 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
@@ -69,6 +90,7 @@
 		2B56F2F52B59951200494E50 /* ProfileSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B56F2F62B59951200494E50 /* ProfileSettingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSettingCollectionViewCell.xib; sourceTree = "<group>"; };
 		2B855F582B6623D3004B0726 /* MainSearchCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchCodeViewController.swift; sourceTree = "<group>"; };
+		2BABC3142B7269580005DA5B /* ShoppingSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingSessionManager.swift; sourceTree = "<group>"; };
 		2BB13E132B5AEF7100DCCB3D /* MainSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchViewController.swift; sourceTree = "<group>"; };
 		2BB13E152B5AEF9100DCCB3D /* MainSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSearchTableViewCell.swift; sourceTree = "<group>"; };
 		2BB13E162B5AEF9100DCCB3D /* MainSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainSearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -119,6 +141,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B2347C72B67AD5A003C9709 /* MainSearch */ = {
+			isa = PBXGroup;
+			children = (
+				2B855F582B6623D3004B0726 /* MainSearchCodeViewController.swift */,
+				2B23478F2B666C42003C9709 /* MainSearchCodeTableViewCell.swift */,
+			);
+			path = MainSearch;
+			sourceTree = "<group>";
+		};
+		2B2347C82B67AD75003C9709 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				2B2347DA2B680302003C9709 /* New Group */,
+				2B2347C92B67AD87003C9709 /* SearchResult */,
+				2B2347C72B67AD5A003C9709 /* MainSearch */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		2B2347C92B67AD87003C9709 /* SearchResult */ = {
+			isa = PBXGroup;
+			children = (
+				2B2347DB2B680323003C9709 /* SearchResultCodeViewController.swift */,
+				2B2347E12B680509003C9709 /* SearchResultCodeCollectionViewCell.swift */,
+			);
+			path = SearchResult;
+			sourceTree = "<group>";
+		};
+		2B2347CC2B67ADF4003C9709 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				2B2347CA2B67ADF0003C9709 /* OnboardingCodeViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		2B2347CD2B67B168003C9709 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				2B2347D22B67CE8D003C9709 /* CompleteButton.swift */,
+				2B2347D42B67D85F003C9709 /* ProfileImageView.swift */,
+				2B2347DF2B6803EE003C9709 /* LikeButton.swift */,
+				2B2347E32B680D29003C9709 /* SortButton.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		2B2347CE2B67C163003C9709 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2B2347CF2B67C16E003C9709 /* ProfileSetting */,
+				2B2347D02B67C193003C9709 /* ProfileCodeViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		2B2347CF2B67C16E003C9709 /* ProfileSetting */ = {
+			isa = PBXGroup;
+			children = (
+				2B2347D62B67DDD4003C9709 /* ProfileSettingCodeViewController.swift */,
+				2B2347D82B67E50F003C9709 /* ProfileSettingCodeCollectionViewCell.swift */,
+			);
+			path = ProfileSetting;
+			sourceTree = "<group>";
+		};
+		2B2347DA2B680302003C9709 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		2B56F2DF2B59677F00494E50 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,8 +256,9 @@
 		2B855F572B662257004B0726 /* CodeBase */ = {
 			isa = PBXGroup;
 			children = (
-				2B855F582B6623D3004B0726 /* MainSearchCodeViewController.swift */,
-				2B23478F2B666C42003C9709 /* MainSearchCodeTableViewCell.swift */,
+				2B2347CC2B67ADF4003C9709 /* Onboarding */,
+				2B2347CE2B67C163003C9709 /* Profile */,
+				2B2347C82B67AD75003C9709 /* Main */,
 			);
 			path = CodeBase;
 			sourceTree = "<group>";
@@ -265,10 +360,12 @@
 				2BCE4F9B2B5955CC001AAE55 /* UserDefaultManager.swift */,
 				2BD5C66E2B5BF9E400B218F9 /* ShoppingAPIManager.swift */,
 				2BF36CB82B594BE9007BE3A7 /* APIKey.swift */,
-				2B855F572B662257004B0726 /* CodeBase */,
+				2BABC3142B7269580005DA5B /* ShoppingSessionManager.swift */,
+				2B2347CD2B67B168003C9709 /* CustomView */,
 				2B56F2DF2B59677F00494E50 /* Model */,
 				2B56F2E72B596B7D00494E50 /* Protocol */,
 				2B56F2E22B5969EF00494E50 /* Extension */,
+				2B855F572B662257004B0726 /* CodeBase */,
 				2BCE4F862B594CD0001AAE55 /* Onborading */,
 				2BCE4F912B595438001AAE55 /* Profile */,
 				2BB13E122B5A91C000DCCB3D /* Main */,
@@ -376,31 +473,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B2347D52B67D85F003C9709 /* ProfileImageView.swift in Sources */,
 				2BB415342B5D376D00C5A1D4 /* SettingProfileTableViewCell.swift in Sources */,
 				2BCE4F8E2B595424001AAE55 /* ProfileViewController.swift in Sources */,
 				2B855F592B6623D3004B0726 /* MainSearchCodeViewController.swift in Sources */,
 				2BB415302B5CE2F500C5A1D4 /* SettingTableViewCell.swift in Sources */,
 				2B56F2ED2B5975A800494E50 /* UIButton + Extension.swift in Sources */,
+				2B2347D12B67C193003C9709 /* ProfileCodeViewController.swift in Sources */,
 				2B56F2E42B596A0700494E50 /* UIViewcontroller + Extension.swift in Sources */,
+				2B2347CB2B67ADF0003C9709 /* OnboardingCodeViewController.swift in Sources */,
 				2B56F2E92B596D4100494E50 /* UIImageView + Extension.swift in Sources */,
+				2B2347E42B680D29003C9709 /* SortButton.swift in Sources */,
 				2B56F2E12B59678A00494E50 /* ProfileImage.swift in Sources */,
 				2BF36CA72B5942ED007BE3A7 /* MainController.swift in Sources */,
 				2B56F2EB2B596FDA00494E50 /* Color.swift in Sources */,
+				2BABC3152B7269580005DA5B /* ShoppingSessionManager.swift in Sources */,
+				2B2347D72B67DDD4003C9709 /* ProfileSettingCodeViewController.swift in Sources */,
+				2B2347D92B67E50F003C9709 /* ProfileSettingCodeCollectionViewCell.swift in Sources */,
 				2BD5C6712B5C243400B218F9 /* Shopping.swift in Sources */,
 				2BF36CA32B5942ED007BE3A7 /* AppDelegate.swift in Sources */,
 				2BD5C66F2B5BF9E400B218F9 /* ShoppingAPIManager.swift in Sources */,
 				2BD5C66B2B5BEAD300B218F9 /* SearchResultViewController.swift in Sources */,
 				2BB4152D2B5CE2B000C5A1D4 /* SettingViewController.swift in Sources */,
 				2BF36CB92B594BE9007BE3A7 /* APIKey.swift in Sources */,
+				2B2347E02B6803EE003C9709 /* LikeButton.swift in Sources */,
 				2B56F2F72B59951200494E50 /* ProfileSettingCollectionViewCell.swift in Sources */,
 				2BD5C6742B5C2AF400B218F9 /* SearchResultCollectionViewCell.swift in Sources */,
 				2BF36CA52B5942ED007BE3A7 /* SceneDelegate.swift in Sources */,
 				2BB13E1B2B5B7DBE00DCCB3D /* Reuseable.swift in Sources */,
 				2BB13E172B5AEF9100DCCB3D /* MainSearchTableViewCell.swift in Sources */,
+				2B2347D32B67CE8D003C9709 /* CompleteButton.swift in Sources */,
+				2B2347DC2B680323003C9709 /* SearchResultCodeViewController.swift in Sources */,
 				2BCE4F8C2B594D3B001AAE55 /* OnboradingViewController.swift in Sources */,
 				2B56F2E62B596B6000494E50 /* Protocol.swift in Sources */,
 				2B2347902B666C42003C9709 /* MainSearchCodeTableViewCell.swift in Sources */,
 				2BB13E142B5AEF7100DCCB3D /* MainSearchViewController.swift in Sources */,
+				2B2347E22B680509003C9709 /* SearchResultCodeCollectionViewCell.swift in Sources */,
 				2BB415282B5C5F1900C5A1D4 /* SearchDetailViewController.swift in Sources */,
 				2BCE4F9C2B5955CC001AAE55 /* UserDefaultManager.swift in Sources */,
 				2B56F2F02B597A4C00494E50 /* ProfileSettingViewController.swift in Sources */,

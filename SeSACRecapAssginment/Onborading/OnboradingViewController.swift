@@ -11,7 +11,6 @@ class OnboradingViewController: UIViewController {
     @IBOutlet var titleImageView: UIImageView!
     @IBOutlet var shoppingImageView: UIImageView!
     @IBOutlet var startButton: UIButton!
-    @IBOutlet var onboradView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

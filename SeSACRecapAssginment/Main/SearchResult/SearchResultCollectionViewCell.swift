@@ -41,7 +41,7 @@ extension SearchResultCollectionViewCell {
     func configureCell(data: Item){
         
         
-        let url = URL(string: data.image)
+        guard let url = URL(string: data.image) else { return }
         
         resultImageView.kf.setImage(with: url)
 
