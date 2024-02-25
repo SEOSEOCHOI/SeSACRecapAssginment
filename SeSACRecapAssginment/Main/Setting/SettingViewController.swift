@@ -9,30 +9,17 @@ import UIKit
 
 class SettingViewController: UIViewController {
     
-    enum SettingOption: CaseIterable {
-        case profile
-        case setting
-    }
+    let settingTableView = UITableView()
     
-    enum SettingList: String, CaseIterable {  // 기능 추가 [내부 case를 배열로 묶어 줌]
-        case notice = "공지사항"
-        case help = "자주 묻는 질문"
-        case qna = "1:1 문의"
-        case notification = "알림 설정"
-        case restart = "처음부터 시작하기"
-    }
-    
-    let settingList = SettingList.allCases
-    
-    @IBOutlet var settingTableView: UITableView!
+    let viewModel = SettingViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         configureView()
     }
+    // TODO: 값전달로 값 변경될 때마다 데이터 수정
     override func viewWillAppear(_ animated: Bool) {
-        //configureView()
         settingTableView.reloadData()
     }
 }
@@ -84,7 +71,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 1
         } else {
-            return SettingList.allCases.count
+            return viewModel.numberOfRowsInSection
         }
     }
     
@@ -97,10 +84,10 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as! SettingTableViewCell
             
-            cell.configureCell(data: settingList[indexPath.row].rawValue)
-
+            cell.configureCell(data: viewModel.cellForRowAt(indexPath))
             cell.settingTitleLabel.font = .systemFont(ofSize: 13)
-            if indexPath.row != settingList.endIndex - 1
+            
+            if indexPath.row != viewModel.settingList.endIndex - 1
             {
                 cell.selectionStyle = .none
             }
@@ -119,7 +106,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(vc, animated: true)
         }
         else {
-            if indexPath.row == settingList.endIndex - 1
+            if indexPath.row == viewModel.settingList.endIndex - 1
             {
                 showAlert()
             }

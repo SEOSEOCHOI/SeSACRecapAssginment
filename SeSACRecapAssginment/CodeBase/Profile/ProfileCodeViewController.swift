@@ -12,13 +12,9 @@ import TextFieldEffects
     ProfileCodeViewController()
 }
 
-enum ValidationError: Error {
-    case isContainNumber
-    case isLengthOver
-    case iscontainSpecial
-}
-
 class ProfileCodeViewController: UIViewController {
+    let viewModel = ProfileSettingViewModel()
+    
     var profileImageName: String = ""
     
     let profileImageView = ProfileImageView(frame: .zero)
@@ -27,7 +23,6 @@ class ProfileCodeViewController: UIViewController {
     
     lazy var nicknameTextField:HoshiTextField = {
         let view = HoshiTextField()
-        view.placeholder = "영화를 검색해 보세요"
         view.delegate = self
         view.addTarget(self, action: #selector(textFieldDidChanged), for: .editingChanged)
         return view
@@ -43,12 +38,29 @@ class ProfileCodeViewController: UIViewController {
         configureConstarints()
         configureView()
         configureTapGestureRecognizer()
+        
+        bindData()
     }
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
         if UserDefaultManager.shaerd.userImage != "" {
             profileImageName = UserDefaultManager.shaerd.userImage
             profileImageView.image = UIImage(named: profileImageName)
+        }
+    }
+    
+    func bindData() {
+        viewModel.outputVlidation.bind { value in
+            self.statusLabel.text = value
+        }
+        viewModel.outputValidationColor.bind { value in
+            if value == true {
+                self.statusLabel.textColor = .green
+                self.completeButton.isEnabled = value
+                self.completeButton.addTarget(self, action: #selector(self.compliteButtonCliked), for: .touchUpInside)
+            } else {
+                self.statusLabel.textColor = .red
+                self.completeButton.isEnabled = value
+            }
         }
     }
 }
@@ -149,48 +161,7 @@ extension ProfileCodeViewController {
 extension ProfileCodeViewController: UITextFieldDelegate {
     @objc func textFieldDidChanged() {
         guard let text = nicknameTextField.text else { return }
-        do {
-            let _ = try validateUserInputError(text: text)
-            statusLabel.text = "사용할 수 있는 닉네임이에요"
-            completeButton.isEnabled = true
-            completeButton.addTarget(self, action: #selector(compliteButtonCliked), for: .touchUpInside)
-            print(text)
-        } catch {
-            switch error {
-            case ValidationError.isLengthOver:
-                print("2글자 이상 10글자 미만으로 설정해 주세요")
-                statusLabel.text = "2글자 이상 10글자 미만으로 설정해 주세요"
-                completeButton.isEnabled = false
-            case ValidationError.isContainNumber:
-                print("닉네임에 숫자를 포함할 수 없어요.")
-                statusLabel.text = "닉네임에 숫자를 포함할 수 없어요."
-                completeButton.isEnabled = false
-            case ValidationError.iscontainSpecial:
-                print("닉네임에 @, #, $, %는 포함할 수 없어요.")
-                statusLabel.text = "닉네임에 @, #, $, %는 포함할 수 없어요."
-                completeButton.isEnabled = false
-            default: break
-            }
-        }
-    }
-    
-    func validateUserInputError(text: String) throws -> Bool {
-        let numberPattern: String = "^.*[0-9].*$"
-        let specialPattern: String = "^.*[@#$%].*$"
-
-        
-        guard text.count >= 2, text.count < 10 else {
-            throw ValidationError.isLengthOver
-        }
-        
-        guard text.range(of: specialPattern, options: .regularExpression) == nil else {
-            throw ValidationError.iscontainSpecial
-        }
-        
-        guard text.range(of: numberPattern, options: .regularExpression) == nil else {
-            throw ValidationError.isContainNumber
-        }
-    return true
+        viewModel.inputNickname.value = text
     }
 }
 
