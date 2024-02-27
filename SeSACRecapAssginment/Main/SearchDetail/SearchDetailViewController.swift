@@ -10,6 +10,13 @@ import WebKit
 
 class SearchDetailViewController: UIViewController {
     
+    enum sortWay: String, CaseIterable {
+        case sim
+        case date
+        case asc
+        case dscxo
+    }
+    
     var urlString: String = "url"
     var userFind: String = ""
     var userLike: String = ""

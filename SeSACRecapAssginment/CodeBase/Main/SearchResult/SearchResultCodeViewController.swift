@@ -9,100 +9,70 @@ import UIKit
 import Kingfisher
 import Alamofire
 
-class SearchResultCodeViewController: UIViewController {
+enum sortWay: String, CaseIterable {
+    case sim
+    case date
+    case asc
+    case dsc
     
-    enum sortWay: String, CaseIterable {
-        case sim
-        case date
-        case asc
-        case dsc
+    var sortList: String {
+        switch self {
+        case .sim:
+            " 정확도 "
+        case .date:
+            " 날짜순 "
+        case .asc:
+            " 가격높은순 "
+        case .dsc:
+            " 가격낮은순 "
+        }
     }
+}
+
+class SearchResultCodeViewController: BaseViewController {
     
-    let sortDictionaty = [
-        sortWay.sim.rawValue : " 정확도 ",
-        sortWay.date.rawValue : " 날짜순 ",
-        sortWay.asc.rawValue : " 가격낮은순 ",
-        sortWay.dsc.rawValue : " 가격높은순 "
-    ]
+    let mainView = SearchResultView()
     
-    lazy var sortWayList = sortDictionaty.sorted { $1.value < $0.value }
-        
-    var shopping = Shopping(total: 0, start: 0, display: 0, items:[])
+    override func loadView() {
+        self.view = mainView
+    }
+    let viewModel = NerworkViewModel()
+
     var list: [Item] = []
     
     var userFind: String = ""
     var sort = ""
     var start = 1
     
-    let searchResultCollectionView: UICollectionView = {
-       let view = UICollectionView(frame: .zero, collectionViewLayout: setCollectionViewLayout())
-        view.register(SearchResultCodeCollectionViewCell.self, forCellWithReuseIdentifier: SearchResultCodeCollectionViewCell.identifier)
-        return view
-    }()
-    let amountLabel = UILabel()
-    let sortButton: [SortButton] = [
-    SortButton(),
-    SortButton(),
-    SortButton()
-    ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("화면 이동")
-        navigationItem.title = userFind
-        configureHierarchy()
-        configureConstraints()
-        configureView()
         configureCollectionView()
         configureNavigation()
-        searchResultCollectionView.backgroundColor = .clear
+        bindData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.hidesBackButton = true
-        searchResultCollectionView.reloadData()
-    }
-    
-}
-
-extension SearchResultCodeViewController {
-    func configureNavigation() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "chevron.backward"),
-            style: .plain,
-            target: self,
-            action: #selector(backButtonClicked))
-        navigationItem.leftBarButtonItem?.tintColor = .white
-    }
-    
-    @objc func backButtonClicked(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    func configureHierarchy() {
-        view.addSubview(searchResultCollectionView)
-        view.addSubview(amountLabel)
-        sortButton.forEach { button in
-            view.addSubview(button)
+    func bindData() {
+        viewModel.outputData.bind { _ in
+            self.mainView.searchResultCollectionView.reloadData()
         }
     }
     
-    func configureConstraints() {
-        searchResultCollectionView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+    override func configureView() {
+        for button in mainView.sortButton {
+            button.addTarget(self, action: #selector(sortButtonClicked), for: .touchUpInside)
         }
-    }
-    
-    func configureView() {
+        
+        viewModel.inputViewDidLoadTrigger.value = ()
+        
         ShoppingSessionManager.shared.request(type: Shopping.self, text: userFind, sort: sortWay.sim.rawValue, start: String(start), completionHandler: { value, error in
             if error == nil {
                 guard let value = value else { return }
-                self.amountLabel.text = "\(value.total)개의 검색 결과"
+                self.mainView.amountLabel.text = "\(value.total)개의 검색 결과"
                 
                 self.list = value.items
                 self.sort = sortWay.sim.rawValue
                 self.shopping = value
-                self.searchResultCollectionView.reloadData()
+                self.mainView.searchResultCollectionView.reloadData()
             } else {
                 guard let error = error else { return }
                 switch error {
@@ -114,18 +84,44 @@ extension SearchResultCodeViewController {
                 }
             }
         })
+    }
+    @objc func sortButtonClicked(_ sender: UIButton) {
+        start = 1
         
-        amountLabel.font = .systemFont(ofSize: 13)
-        amountLabel.textColor = UIColor(named: Color.PointColor.rawValue)
-
-        for count in 0 ... sortButton.count - 1 {
-            sortButton[count].tag = count
-            sortButton[count].setTitle("\(sortWayList[count].value)", for: .normal)
+        for button in mainView.sortButton {
+            if button.tag == sender.tag {
+                button.setTitleColor(.black, for: .normal)
+                button.backgroundColor = .white
+            } else {
+                button.setTitleColor(.white, for: .normal)
+                button.backgroundColor = .black
+            }
+        }
+        
+        manager.callRequest(text: userFind, sort: sortWay.allCases[sender.tag].rawValue, start: String(start)) { value in
+            self.sort = self.sort
+            self.list = value.items
+            self.mainView.searchResultCollectionView.reloadData()
+            self.shopping = value
         }
     }
 }
 
+extension SearchResultCodeViewController {
+    func configureNavigation() {
+        navigationItem.title = userFind
 
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "chevron.backward"),
+            style: .plain,
+            target: self,
+            action: #selector(backButtonClicked))
+        navigationItem.leftBarButtonItem?.tintColor = .white
+    }
+    @objc func backButtonClicked(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+}
 
 extension SearchResultCodeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -158,17 +154,17 @@ extension SearchResultCodeViewController: UICollectionViewDelegate, UICollection
                 UserDefaultManager.shaerd.userLike = like
             }
         }
-        searchResultCollectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
+        mainView.searchResultCollectionView.reloadItems(at: [IndexPath(row: sender.tag, section: 0)])
     }
 }
 
 extension SearchResultCodeViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for item in indexPaths {
-            
-            if list.count - 3 == item.row && isEnd(start: start, count: 30, data: shopping ) == false {
+            if viewModel.outputData.value.count - 3 == item.row && isEnd(start: start, count: 30, data: shopping ) == false {
                 
                 start += 30
+                viewModel.
                 
                 ShoppingSessionManager.shared.request(type: Shopping.self, text: userFind, sort: sort, start: String(start)) { value, error in
                     if error == nil {
@@ -180,10 +176,10 @@ extension SearchResultCodeViewController: UICollectionViewDataSourcePrefetching 
                             self.list.append(contentsOf: value.items)
                         }
                         
-                        self.searchResultCollectionView.reloadData()
+                        self.mainView.searchResultCollectionView.reloadData()
                         
                         if self.start == 1 {
-                            self.searchResultCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+                            self.mainView.searchResultCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
                         }
                         
                     } else {
@@ -209,14 +205,12 @@ extension SearchResultCodeViewController: UICollectionViewDataSourcePrefetching 
     }
 }
 
-// MARK: CollectionView Logic + Layout
 extension SearchResultCodeViewController {
-    // TODO: 화면 이동
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let sb = UIStoryboard(name: "SearchDetail", bundle: nil)
         let vc = sb.instantiateViewController(identifier: SearchDetailViewController.identifier) as! SearchDetailViewController
-        let data = list[indexPath.row]
+        let data = viewModel.outputData.value[indexPath.item]
         let url = "https://msearch.shopping.naver.com/product/\(data.productID)"
         
         vc.urlString = url
@@ -226,24 +220,9 @@ extension SearchResultCodeViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    static func setCollectionViewLayout() -> UICollectionViewLayout{
-        let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 10
-        let cellWidth = (UIScreen.main.bounds.width - (spacing * 3)) / 2
-        layout.itemSize = CGSize(width: cellWidth, height: cellWidth * 1.4)
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
-        layout.minimumLineSpacing = spacing
-        layout.minimumInteritemSpacing = spacing
-        layout.scrollDirection = .vertical
-        
-        return layout
-    }
-    
     func configureCollectionView() {
-        searchResultCollectionView.delegate = self
-        searchResultCollectionView.dataSource = self
-        searchResultCollectionView.prefetchDataSource = self
-        
-        searchResultCollectionView.register(SearchResultCodeCollectionViewCell.self, forCellWithReuseIdentifier: SearchResultCodeCollectionViewCell.identifier)
+        mainView.searchResultCollectionView.delegate = self
+        mainView.searchResultCollectionView.dataSource = self
+        mainView.searchResultCollectionView.prefetchDataSource = self
     }
 }

@@ -46,7 +46,6 @@ class SearchResultCodeCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(productNameLabel.snp.bottom).offset(10)
         }
         
-        
         resultImageView.layer.cornerRadius = 10
         
         mallNameLabel.font = .systemFont(ofSize: 15)

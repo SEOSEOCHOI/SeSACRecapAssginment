@@ -13,8 +13,6 @@ class MainSearchCodeTableViewCell: UITableViewCell {
     let titleLabel = UILabel()
     let deleteButton = UIButton()
     
-    // 코드로 구성할 때 실행되는 초기화구문으로, awakeFromNib에서 작성되는 코드도 함께 작성!
-    // override: 재정의이기 때문에 super 메서드도 작성해 주어야 한다.
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -63,9 +61,6 @@ class MainSearchCodeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    
-
 }
 
 extension MainSearchCodeTableViewCell {

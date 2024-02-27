@@ -30,6 +30,7 @@ class ProfileViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         print("viewWillAppear")
         if UserDefaultManager.shaerd.userImage != "" {
             profileImageName = UserDefaultManager.shaerd.userImage // 인스턴스의 프로퍼티 가지고 오고 있는 상태라 get 호출함

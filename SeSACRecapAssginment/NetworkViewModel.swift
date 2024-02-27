@@ -1,28 +1,28 @@
 //
-//  ShoppingAPIManager.swift
+//  NetworkViewModel.swift
 //  SeSACRecapAssginment
 //
-//  Created by 최서경 on 1/20/24.
+//  Created by 최서경 on 2/27/24.
 //
 
 import Foundation
 import Alamofire
 
-struct ShoppingAPIManager {
+class NerworkViewModel {
+    var inputViewDidLoadTrigger: Observable<Void?> = Observable(nil)
+    var inputText
+    var inputSort
+    var inputStart
+    var outputData: Observable<[Item]> = Observable([])
+ 
+    init() {
+
+        inputViewDidLoadTrigger.bind { _ in
+            self.callRequest(text: <#String#>, sort: <#String#>, start: <#String#>, completionHandler: <#(Shopping) -> Void#>)
+        }
+    }
     
-//    var inputViewDidLoadTrigger: Observable<Void?> = Observable(nil)
-//    
-//    var outputLabelData = Observable("")
-//    var outputMarketData: Observable<[Shopping]> = Observable([])
-//    
-//    init() {
-//        print("ViewModel init")
-//        inputViewDidLoadTrigger.bind { _ in
-//            self.callRequest(text: <#T##String#>, sort: <#T##String#>, start: <#T##String#>, completionHandler: <#T##(Shopping) -> Void#>)
-//        }
-//    }
-//    
-    func callRequest(text: String, sort: String, start: String, completionHandler: @escaping (Shopping) -> Void) {
+    private func callRequest(text: String, sort: String, start: String, completionHandler: @escaping (Shopping) -> Void) {
         let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         
         let url = "https://openapi.naver.com/v1/search/shop.json?query=\(query!)&sort=\(sort)&display=30&start=\(start)"

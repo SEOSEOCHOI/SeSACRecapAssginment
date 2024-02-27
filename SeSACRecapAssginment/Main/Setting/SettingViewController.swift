@@ -20,6 +20,7 @@ class SettingViewController: UIViewController {
     }
     // TODO: 값전달로 값 변경될 때마다 데이터 수정
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         settingTableView.reloadData()
     }
 }
